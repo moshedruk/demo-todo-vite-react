@@ -1,1 +1,10 @@
 
+.app{
+    width: 60%;
+    height: 100vh;
+    background-color: bisque;
+    display: flex;    
+    align-items: center;
+    font-family: Arial, sans-serif;
+    flex-direction: column;
+}

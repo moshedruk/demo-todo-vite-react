@@ -1,27 +1,28 @@
 
-export interface Itamanager {
-    id: number;
+export interface ItamInterface {    
     name: string;
     description: string;
-    titles: string;
-    getItams(): Itam[];
-    addItem(item: Itam): void;
-    removeItem(itemId: number): void;
-    updateItem(itemId: number, updatedItem: Itam): void;
+    title: string;    
+    // getItams(): Itam[];
+    // addItem(item: Itam): void;
+    // removeItem(itemId: number): void;
+    // updateItem(itemId: number, updatedItem: Itam): void;
 }
 
-export class Itam implements Itamanager {
-    id: number;
-    name: string;
-    description: string;
-    titles: string;
-    private items: Itam[] = []; // מערך כדי לאחסן את הפריטים
+export class Itam implements ItamInterface {    
+    public name: string;
+    public description: string;
+    public title: string;
+    public create_at: Date
+    public completed : boolean
+    private items: Itam[] = []; 
 
-    constructor(Itamanager: Itamanager) {
-        this.id = Itamanager.id;
-        this.name = Itamanager.name;
-        this.description = Itamanager.description;
-        this.titles = Itamanager.titles;
+    constructor(ItamInterface: ItamInterface) {        
+        this.name = ItamInterface.name;
+        this.description = ItamInterface.description;
+        this.title = ItamInterface.title;
+        this.completed = false;
+        this.create_at = new Date();
     }
 
     getItams(): Itam[] {
@@ -32,14 +33,14 @@ export class Itam implements Itamanager {
         this.items.push(item);
     }
 
-    removeItem(itemId: number): void {
-        this.items = this.items.filter(item => item.id !== itemId);
-    }
+    // removeItem(itemName: string): void {
+    //     this.items = this.items.filter(item => item.name !== itemName);
+    // }
 
-    updateItem(itemId: number, updatedItem: Itam): void {
-        const index = this.items.findIndex(item => item.id === itemId);
-        if (index !== -1) {
-            this.items[index] = updatedItem;
-        }
-    }
+    // updateItem(itemName: string, updatedItem: Itam): void {
+    //     const index = this.items.find(item => item.name !== itemName);
+    //      {
+    //         this.items[index?.name] = updatedItem;
+    //     }
+    // }
 }
